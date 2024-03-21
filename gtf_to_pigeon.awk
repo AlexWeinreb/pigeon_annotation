@@ -12,6 +12,7 @@ function extract_attribute(field, attribute) {
 
 BEGIN {
     FS="\t"
+	OFS="\t"
 }
 
 $3 == "gene" {
