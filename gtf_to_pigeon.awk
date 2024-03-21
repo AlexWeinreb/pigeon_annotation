@@ -24,21 +24,15 @@ $3 == "gene" {
 $3 == "transcript" {
     
 	gene_id_from_tx = extract_attribute($9, "gene_id")
-    gene_name_from_tx = extract_attribute($9, "gene_name")
 	transcript_id_from_tx = extract_attribute($9, "transcript_id")
 	
-	
-	if(gene_name_from_tx != gene_name_from_gene){
-	  print "Gene name doesn't match. Previous gene: " gene_name_from_gene " new one: " gene_name_from_tx 
-	  exit 1
-	}
 	
 	if(gene_id_from_tx != gene_id_from_gene){
 	  print "Gene id doesn't match. Previous gene: " gene_id_from_gene " new one: " gene_id_from_tx 
 	  exit 1
 	}
 	
-	print $1, $2, $3, $4, $5, $6, $7, $8, "gene_id \"" gene_id_from_tx "\"; transcript_id \"" transcript_id_from_tx "\"; gene_name \"" gene_name_from_tx "\";"
+	print $1, $2, $3, $4, $5, $6, $7, $8, "gene_id \"" gene_id_from_tx "\"; transcript_id \"" transcript_id_from_tx "\"; gene_name \"" gene_name_from_gene "\";"
 }
 
 
@@ -52,6 +46,6 @@ $3 == "exon" {
 	  exit 1
 	}
     
-    print $1, $2, $3, $4, $5, $6, $7, $8, "gene_id \"" gene_id_from_tx "\"; transcript_id \"" transcript_id_from_ex "\"; gene_name \"" gene_name_from_tx "\";"
+    print $1, $2, $3, $4, $5, $6, $7, $8, "gene_id \"" gene_id_from_tx "\"; transcript_id \"" transcript_id_from_ex "\"; gene_name \"" gene_name_from_gene "\";"
 }
 
