@@ -29,7 +29,7 @@ $3 == "transcript" {
 	
 	
 	if(gene_id_from_tx != gene_id_from_gene){
-	  print "Gene id doesn't match. Previous gene: " gene_id_from_gene " new one: " gene_id_from_tx 
+	  print "Gene id doesn't match. Previous gene: " gene_id_from_gene " new one: " gene_id_from_tx > "/dev/stderr"
 	  exit 1
 	}
 	
@@ -43,11 +43,11 @@ $3 == "exon" {
 	transcript_id_from_ex = extract_attribute($9, "transcript_id")
 	
 	if(gene_id_from_ex != gene_id_from_tx){
-	  print "Gene id doesn't match. Previous id: " gene_id_from_tx " new one: " gene_id_from_ex 
+	  print "Gene id doesn't match. Previous id: " gene_id_from_tx " new one: " gene_id_from_ex > "/dev/stderr"
 	  exit 1
 	}
 	if(transcript_id_from_ex != transcript_id_from_tx){
-	  print "Transcript id doesn't match. Previous id: " transcript_id_from_tx " new one: " transcript_id_from_ex 
+	  print "Transcript id doesn't match. Previous id: " transcript_id_from_tx " new one: " transcript_id_from_ex > "/dev/stderr"
 	  exit 1
 	}
     
